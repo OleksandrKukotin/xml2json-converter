@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -5,13 +7,13 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 
 public class XmlToJsonConverter {
 
     public static void main(String[] args) {
-        final ClassLoader classLoader = XmlToJsonConverter.class.getClassLoader();
-        final String fileName = Objects.requireNonNull(classLoader.getResource("plant_catalog.xml")).getFile();
+        ClassLoader classLoader = XmlToJsonConverter.class.getClassLoader();
+        String fileName = classLoader.getResource("input.xml").getFile();
+        JSONObject resultObject = new JSONObject();
         try (InputStream stream = new FileInputStream(fileName)) {
             XMLInputFactory inputFactory = XMLInputFactory.newFactory();
             inputFactory.setProperty(XMLInputFactory.IS_COALESCING, true);
