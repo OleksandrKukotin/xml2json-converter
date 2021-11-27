@@ -1,4 +1,3 @@
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -9,7 +8,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class XmlToJsonConverter {
@@ -23,36 +21,33 @@ public class XmlToJsonConverter {
             final Document document = docBuilder.parse(new File(fileName));
             final Node firstChild = document.getFirstChild();
 
-            JSONArray resultJson = new JSONArray();
-            handleChildren(firstChild, resultJson);
-            System.out.println(resultJson);
-            File result = new File("result.json");
-            FileWriter fileWriter = new FileWriter(result);
-            fileWriter.write(resultJson.toString());
-            fileWriter.close();
+            final JSONObject jsonObject = handleChildren(firstChild);
+            // TODO: write to a Json file
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
+            // TODO: handle exceptions
             e.printStackTrace();
         }
     }
 
-    private static void handleChildren(Node node, JSONArray jsonArray) {
-        JSONObject tempObject = new JSONObject();
-        if (!node.hasChildNodes()) {
-            return;
-        }
+    private static JSONObject handleChildren(Node node) {
+        final JSONObject jsonObject = new JSONObject();
 
-        NodeList childNodes = node.getChildNodes();
+        final NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
-            Node item = childNodes.item(i);
+            final Node item = childNodes.item(i);
+
+            final String textContent = item.getTextContent();
+
             if (item.getNodeType() == Node.ELEMENT_NODE) {
-                tempObject.put(item.getNodeName(), item.getLastChild().getTextContent());
-                System.out.println(item.getNodeName() + " : " + item.getFirstChild().getTextContent());
-                handleChildren(item, jsonArray);
+                jsonObject.accumulate(item.getNodeName(), handleChildren(item));
+            } else if (item.getNodeType() == Node.TEXT_NODE && !textContent.trim().isEmpty()) {
+                jsonObject.put(node.getNodeName(), textContent);
             }
         }
-        if (!tempObject.isEmpty()){
-            jsonArray.put(tempObject);
-        }
+
+        // TODO: handle tag attributes
+
+        return jsonObject;
     }
 }
