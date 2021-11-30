@@ -8,13 +8,15 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class XmlToJsonConverter {
 
     public static void main(String[] args) {
         final ClassLoader classLoader = XmlToJsonConverter.class.getClassLoader();
-        final String fileName = classLoader.getResource("input.xml").getFile();
+        final String fileName = Objects.requireNonNull(classLoader.getResource("input.xml")).getFile();
         final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         try {
             final DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
@@ -22,7 +24,10 @@ public class XmlToJsonConverter {
             final Node firstChild = document.getFirstChild();
 
             final JSONObject jsonObject = handleChildren(firstChild);
-            // TODO: write to a Json file
+            final File resultFile = new File("result.json");
+            FileWriter fileWriter = new FileWriter(resultFile);
+            fileWriter.write(jsonObject.toString());
+            fileWriter.close();
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             // TODO: handle exceptions
@@ -45,7 +50,6 @@ public class XmlToJsonConverter {
                 jsonObject.put(node.getNodeName(), textContent);
             }
         }
-
         // TODO: handle tag attributes
 
         return jsonObject;
