@@ -1,4 +1,6 @@
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -15,6 +17,7 @@ import java.util.Objects;
 public class XmlToJsonConverter {
 
     public static void main(String[] args) {
+        final Logger logger = LoggerFactory.getLogger(XmlToJsonConverter.class);
         final ClassLoader classLoader = XmlToJsonConverter.class.getClassLoader();
         final String fileName = Objects.requireNonNull(classLoader.getResource("input.xml")).getFile();
         final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -29,9 +32,12 @@ public class XmlToJsonConverter {
             fileWriter.write(jsonObject.toString());
             fileWriter.close();
 
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            // TODO: handle exceptions
-            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            logger.error("Error in the XML parser configuration");
+        } catch (SAXException e) {
+            logger.error("Error during reading the XML file");
+        } catch (IOException e) {
+            logger.error("Reading or writing file error");
         }
     }
 

@@ -5,15 +5,22 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+ext {
+    slf4jVersion = "1.7.32"
+    jUnitVersion = "5.8.2"
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'stax:stax-api:1.0.1'
     implementation 'org.json:json:20210307'
+    implementation "ch.qos.logback:logback-classic:1.2.7"
+    testImplementation "org.slf4j:slf4j-simple:$slf4jVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$jUnitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jUnitVersion"
 }
 
 test {
