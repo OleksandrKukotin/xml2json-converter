@@ -2,7 +2,6 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -17,22 +16,19 @@ import java.util.Objects;
 
 public class XmlToJsonConverter {
 
+    private static final Logger logger = LoggerFactory.getLogger(XmlToJsonConverter.class);
+
     public static void main(String[] args) {
-        final Logger logger = LoggerFactory.getLogger(XmlToJsonConverter.class);
         final ClassLoader classLoader = XmlToJsonConverter.class.getClassLoader();
         final String fileName = Objects.requireNonNull(classLoader.getResource("input.xml")).getFile();
         final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-        try {
+        final File resultFile = new File("result.json");
+        try (FileWriter fileWriter = new FileWriter(resultFile)) {
             final DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
             final Document document = docBuilder.parse(new File(fileName));
-            final Node firstChild = document.getFirstChild();
-
-            final JSONObject jsonObject = handleChildren(firstChild);
-            final File resultFile = new File("result.json");
-            FileWriter fileWriter = new FileWriter(resultFile);
+            final Node rootNode = document.getFirstChild();
+            final JSONObject jsonObject = handleNode(rootNode, new JSONObject());
             fileWriter.write(jsonObject.toString());
-            fileWriter.close();
-
         } catch (ParserConfigurationException e) {
             logger.error("Error in the XML parser configuration");
         } catch (SAXException e) {
@@ -42,33 +38,31 @@ public class XmlToJsonConverter {
         }
     }
 
-    private static JSONObject handleChildren(Node node) {
-        final JSONObject jsonObject = new JSONObject();
+    private static JSONObject handleNode(Node node, JSONObject jsonObject) {
+        switch (node.getNodeType()) {
+            case Node.ELEMENT_NODE:
 
-        final NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            final Node item = childNodes.item(i);
-
-            final String textContent = item.getTextContent();
-
-            switch (item.getNodeType()){
-                case Node.ELEMENT_NODE:
-                    jsonObject.accumulate(item.getNodeName(), handleChildren(item));
-                    if (item.hasAttributes()){
-                        System.out.println("Tak");
-                        NamedNodeMap attributes = item.getAttributes();
-                        System.out.println();
+                if (node.hasChildNodes()) {
+                    NodeList nodeChildren = node.getChildNodes();
+                    for (int i = 0; i < nodeChildren.getLength(); i++) {
+                        Node child = nodeChildren.item(i);
+                        jsonObject.accumulate(node.getNodeName(), handleNode(child, jsonObject));
                     }
-                    break;
-                case Node.TEXT_NODE:
-                    if (!textContent.trim().isEmpty()) {
-                        jsonObject.put(node.getNodeName(), textContent);
-                    }
-                    break;
-            }
+                }
+                break;
+            case Node.TEXT_NODE:
+                String textContent = node.getTextContent();
+                if (!textContent.trim().isEmpty()) {
+                    jsonObject.put(node.getNodeName(), textContent);
+                }
+                break;
+            case Node.ATTRIBUTE_NODE:
+                jsonObject.put(node.getNodeName(), node.getNodeValue());
+                break;
+            default:
+                break;
         }
         // TODO: handle tag attributes
-
         return jsonObject;
     }
 }
