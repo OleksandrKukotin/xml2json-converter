@@ -2,6 +2,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -50,10 +51,20 @@ public class XmlToJsonConverter {
 
             final String textContent = item.getTextContent();
 
-            if (item.getNodeType() == Node.ELEMENT_NODE) {
-                jsonObject.accumulate(item.getNodeName(), handleChildren(item));
-            } else if (item.getNodeType() == Node.TEXT_NODE && !textContent.trim().isEmpty()) {
-                jsonObject.put(node.getNodeName(), textContent);
+            switch (item.getNodeType()){
+                case Node.ELEMENT_NODE:
+                    jsonObject.accumulate(item.getNodeName(), handleChildren(item));
+                    if (item.hasAttributes()){
+                        System.out.println("Tak");
+                        NamedNodeMap attributes = item.getAttributes();
+                        System.out.println();
+                    }
+                    break;
+                case Node.TEXT_NODE:
+                    if (!textContent.trim().isEmpty()) {
+                        jsonObject.put(node.getNodeName(), textContent);
+                    }
+                    break;
             }
         }
         // TODO: handle tag attributes
