@@ -14,12 +14,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-public class XmlToJsonConverter {
+public class Xml2JsonConverter {
 
-    private static final Logger logger = LoggerFactory.getLogger(XmlToJsonConverter.class);
+    private static final Logger logger = LoggerFactory.getLogger(Xml2JsonConverter.class);
 
     public static void main(String[] args) {
-        final ClassLoader classLoader = XmlToJsonConverter.class.getClassLoader();
+        final ClassLoader classLoader = Xml2JsonConverter.class.getClassLoader();
         final String fileName = Objects.requireNonNull(classLoader.getResource("input.xml")).getFile();
         final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         final File resultFile = new File("result.json");
@@ -41,7 +41,6 @@ public class XmlToJsonConverter {
     private static JSONObject handleNode(Node node, JSONObject jsonObject) {
         switch (node.getNodeType()) {
             case Node.ELEMENT_NODE:
-
                 if (node.hasChildNodes()) {
                     NodeList nodeChildren = node.getChildNodes();
                     for (int i = 0; i < nodeChildren.getLength(); i++) {

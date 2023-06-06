@@ -16,8 +16,8 @@ repositories {
 
 dependencies {
     implementation 'stax:stax-api:1.0.1'
-    implementation 'org.json:json:20210307'
-    implementation "ch.qos.logback:logback-classic:1.2.7"
+    implementation 'org.json:json:20220320'
+    implementation 'ch.qos.logback:logback-classic:1.2.9'
     testImplementation "org.slf4j:slf4j-simple:$slf4jVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jUnitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jUnitVersion"
