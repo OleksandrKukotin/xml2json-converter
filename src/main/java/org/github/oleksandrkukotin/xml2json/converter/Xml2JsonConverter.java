@@ -1,3 +1,5 @@
+package org.github.oleksandrkukotin.xml2json.converter;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +20,11 @@ public class Xml2JsonConverter {
 
     private static final Logger logger = LoggerFactory.getLogger(Xml2JsonConverter.class);
 
+    // TODO: realize what doesn't work and fix that
     public static void main(String[] args) {
         final ClassLoader classLoader = Xml2JsonConverter.class.getClassLoader();
         final String fileName = Objects.requireNonNull(classLoader.getResource("input.xml")).getFile();
+        logger.info(fileName);
         final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         final File resultFile = new File("result.json");
         try (FileWriter fileWriter = new FileWriter(resultFile)) {
