@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <books>
+        <book id="1" genre="fiction" published="2022-05-15">
+            <title>The Adventure of XML</title>
+            <author>
+                <name>John Doe</name>
+                <email>john.doe@example.com</email>
+            </author>
+            <publisher>
+                <name>Tech Books Publishing Ltd.</name>
+                <address>
+                    <street>1234 Elm Street</street>
+                    <city>Techville</city>
+                    <state>CA</state>
+                    <zipcode>90210</zipcode>
+                </address>
+            </publisher>
+            <chapters>
+                <chapter number="1" title="Introduction to XML">
+                    <section>
+                        <title>What is XML?</title>
+                        <content>This chapter introduces the basics of XML.</content>
+                    </section>
+                    <section>
+                        <title>XML Syntax</title>
+                        <content>XML syntax rules and examples.</content>
+                    </section>
+                </chapter>
+                <chapter number="2" title="Advanced XML">
+                    <section>
+                        <title>XML Namespaces</title>
+                        <content>Understanding and using XML namespaces.</content>
+                    </section>
+                    <section>
+                        <title>XML Schema</title>
+                        <content>Defining structure and constraints with XML Schema.</content>
+                    </section>
+                </chapter>
+            </chapters>
+            <price currency="USD">29.99</price>
+            <available>yes</available>
+        </book>
+        <book id="2" genre="non-fiction" published="2021-11-01">
+            <title>Understanding JSON</title>
+            <author>
+                <name>Jane Smith</name>
+                <email>jane.smith@example.com</email>
+            </author>
+            <publisher>
+                <name>Learning Press</name>
+                <address>
+                    <street>5678 Maple Avenue</street>
+                    <city>Knowtown</city>
+                    <state>NY</state>
+                    <zipcode>10001</zipcode>
+                </address>
+            </publisher>
+            <chapters>
+                <chapter number="1" title="JSON Basics">
+                    <section>
+                        <title>Introduction to JSON</title>
+                        <content>This chapter covers the fundamentals of JSON.</content>
+                    </section>
+                    <section>
+                        <title>JSON Syntax</title>
+                        <content>Understanding the syntax and structure of JSON.</content>
+                    </section>
+                </chapter>
+                <chapter number="2" title="JSON in Practice">
+                    <section>
+                        <title>Working with JSON</title>
+                        <content>Practical examples and use cases for JSON.</content>
+                    </section>
+                    <section>
+                        <title>JSON and APIs</title>
+                        <content>Using JSON for data exchange in web APIs.</content>
+                    </section>
+                </chapter>
+            </chapters>
+            <price currency="USD">19.99</price>
+            <available>no</available>
+        </book>
+    </books>
+    <magazines>
+        <magazine id="1" genre="tech" published="2023-03-10">
+            <title>Tech Monthly</title>
+            <editor>
+                <name>Emily Johnson</name>
+                <email>emily.johnson@example.com</email>
+            </editor>
+            <publisher>
+                <name>Tech Magazines Inc.</name>
+                <address>
+                    <street>4321 Oak Road</street>
+                    <city>Innotech</city>
+                    <state>TX</state>
+                    <zipcode>75001</zipcode>
+                </address>
+            </publisher>
+            <articles>
+                <article id="a1" title="The Future of AI">
+                    <author>Michael Brown</author>
+                    <content>
+                        <paragraph>Artificial Intelligence (AI) is revolutionizing technology.</paragraph>
+                        <paragraph>In this article, we explore the future trends in AI.</paragraph>
+                    </content>
+                </article>
+                <article id="a2" title="Cybersecurity Best Practices">
+                    <author>Linda White</author>
+                    <content>
+                        <paragraph>Cybersecurity is critical in today's digital age.</paragraph>
+                        <paragraph>Here are some best practices to stay secure online.</paragraph>
+                    </content>
+                </article>
+            </articles>
+            <price currency="USD">5.99</price>
+            <available>yes</available>
+        </magazine>
+    </magazines>
+    <newspapers>
+        <newspaper id="1" genre="daily" published="2024-06-15">
+            <title>Daily News</title>
+            <editor>
+                <name>Robert Wilson</name>
+                <email>robert.wilson@example.com</email>
+            </editor>
+            <publisher>
+                <name>Daily News Corp.</name>
+                <address>
+                    <street>7890 Pine Lane</street>
+                    <city>Metropolis</city>
+                    <state>FL</state>
+                    <zipcode>33101</zipcode>
+                </address>
+            </publisher>
+            <sections>
+                <section id="s1" title="World News">
+                    <article>
+                        <title>Global Economic Trends</title>
+                        <author>Alex Green</author>
+                        <content>
+                            <paragraph>The global economy is experiencing significant changes.</paragraph>
+                            <paragraph>This article analyzes recent trends and their impact.</paragraph>
+                        </content>
+                    </article>
+                    <article>
+                        <title>Climate Change Updates</title>
+                        <author>Susan Black</author>
+                        <content>
+                            <paragraph>Climate change is an ongoing concern worldwide.</paragraph>
+                            <paragraph>This section provides the latest updates and actions.</paragraph>
+                        </content>
+                    </article>
+                </section>
+                <section id="s2" title="Local News">
+                    <article>
+                        <title>Community Events</title>
+                        <author>John Blue</author>
+                        <content>
+                            <paragraph>Local community events are happening this weekend.</paragraph>
+                            <paragraph>Here are some highlights and how to participate.</paragraph>
+                        </content>
+                    </article>
+                    <article>
+                        <title>City Development Projects</title>
+                        <author>Anna Red</author>
+                        <content>
+                            <paragraph>The city has several ongoing development projects.</paragraph>
+                            <paragraph>Get the latest updates and project timelines.</paragraph>
+                        </content>
+                    </article>
+                </section>
+            </sections>
+            <price currency="USD">1.50</price>
+            <available>yes</available>
+        </newspaper>
+    </newspapers>
+</library>
