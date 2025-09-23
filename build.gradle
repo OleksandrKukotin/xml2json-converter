@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'org.github.oleksandrkukotin'
@@ -15,10 +16,14 @@ repositories {
 
 dependencies {
     implementation 'org.json:json:20240303'
-    implementation 'ch.qos.logback:logback-classic:1.5.12'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jUnitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jUnitVersion"
+}
+
+application {
+    mainClass = 'org.github.oleksandrkukotin.xml2json.converter.Xml2JsonConverter'
 }
 
 test {

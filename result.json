@@ -1,0 +1,226 @@
+{"library": {
+    "books": {"book": [
+        {
+            "@genre": "fiction",
+            "chapters": {"chapter": [
+                {
+                    "@title": "Introduction to XML",
+                    "section": [
+                        {
+                            "title": "What is XML?",
+                            "content": "This chapter introduces the basics of XML."
+                        },
+                        {
+                            "title": "XML Syntax",
+                            "content": "XML syntax rules and examples."
+                        }
+                    ],
+                    "@number": "1"
+                },
+                {
+                    "@title": "Advanced XML",
+                    "section": [
+                        {
+                            "title": "XML Namespaces",
+                            "content": "Understanding and using XML namespaces."
+                        },
+                        {
+                            "title": "XML Schema",
+                            "content": "Defining structure and constraints with XML Schema."
+                        }
+                    ],
+                    "@number": "2"
+                }
+            ]},
+            "author": {
+                "name": "John Doe",
+                "email": "john.doe@example.com"
+            },
+            "price": {
+                "#text": 29.99,
+                "@currency": "USD"
+            },
+            "available": "yes",
+            "publisher": {
+                "address": {
+                    "zipcode": 90210,
+                    "city": "Techville",
+                    "street": "1234 Elm Street",
+                    "state": "CA"
+                },
+                "name": "Tech Books Publishing Ltd."
+            },
+            "@id": "1",
+            "title": "The Adventure of XML",
+            "@published": "2022-05-15"
+        },
+        {
+            "@genre": "non-fiction",
+            "chapters": {"chapter": [
+                {
+                    "@title": "JSON Basics",
+                    "section": [
+                        {
+                            "title": "Introduction to JSON",
+                            "content": "This chapter covers the fundamentals of JSON."
+                        },
+                        {
+                            "title": "JSON Syntax",
+                            "content": "Understanding the syntax and structure of JSON."
+                        }
+                    ],
+                    "@number": "1"
+                },
+                {
+                    "@title": "JSON in Practice",
+                    "section": [
+                        {
+                            "title": "Working with JSON",
+                            "content": "Practical examples and use cases for JSON."
+                        },
+                        {
+                            "title": "JSON and APIs",
+                            "content": "Using JSON for data exchange in web APIs."
+                        }
+                    ],
+                    "@number": "2"
+                }
+            ]},
+            "author": {
+                "name": "Jane Smith",
+                "email": "jane.smith@example.com"
+            },
+            "price": {
+                "#text": 19.99,
+                "@currency": "USD"
+            },
+            "available": "no",
+            "publisher": {
+                "address": {
+                    "zipcode": 10001,
+                    "city": "Knowtown",
+                    "street": "5678 Maple Avenue",
+                    "state": "NY"
+                },
+                "name": "Learning Press"
+            },
+            "@id": "2",
+            "title": "Understanding JSON",
+            "@published": "2021-11-01"
+        }
+    ]},
+    "magazines": {"magazine": {
+        "editor": {
+            "name": "Emily Johnson",
+            "email": "emily.johnson@example.com"
+        },
+        "@genre": "tech",
+        "price": {
+            "#text": 5.99,
+            "@currency": "USD"
+        },
+        "available": "yes",
+        "publisher": {
+            "address": {
+                "zipcode": 75001,
+                "city": "Innotech",
+                "street": "4321 Oak Road",
+                "state": "TX"
+            },
+            "name": "Tech Magazines Inc."
+        },
+        "@id": "1",
+        "title": "Tech Monthly",
+        "articles": {"article": [
+            {
+                "@title": "The Future of AI",
+                "author": "Michael Brown",
+                "@id": "a1",
+                "content": {"paragraph": [
+                    "Artificial Intelligence (AI) is revolutionizing technology.",
+                    "In this article, we explore the future trends in AI."
+                ]}
+            },
+            {
+                "@title": "Cybersecurity Best Practices",
+                "author": "Linda White",
+                "@id": "a2",
+                "content": {"paragraph": [
+                    "Cybersecurity is critical in today's digital age.",
+                    "Here are some best practices to stay secure online."
+                ]}
+            }
+        ]},
+        "@published": "2023-03-10"
+    }},
+    "newspapers": {"newspaper": {
+        "editor": {
+            "name": "Robert Wilson",
+            "email": "robert.wilson@example.com"
+        },
+        "@genre": "daily",
+        "price": {
+            "#text": 1.5,
+            "@currency": "USD"
+        },
+        "available": "yes",
+        "publisher": {
+            "address": {
+                "zipcode": 33101,
+                "city": "Metropolis",
+                "street": "7890 Pine Lane",
+                "state": "FL"
+            },
+            "name": "Daily News Corp."
+        },
+        "@id": "1",
+        "title": "Daily News",
+        "sections": {"section": [
+            {
+                "@title": "World News",
+                "@id": "s1",
+                "article": [
+                    {
+                        "author": "Alex Green",
+                        "title": "Global Economic Trends",
+                        "content": {"paragraph": [
+                            "The global economy is experiencing significant changes.",
+                            "This article analyzes recent trends and their impact."
+                        ]}
+                    },
+                    {
+                        "author": "Susan Black",
+                        "title": "Climate Change Updates",
+                        "content": {"paragraph": [
+                            "Climate change is an ongoing concern worldwide.",
+                            "This section provides the latest updates and actions."
+                        ]}
+                    }
+                ]
+            },
+            {
+                "@title": "Local News",
+                "@id": "s2",
+                "article": [
+                    {
+                        "author": "John Blue",
+                        "title": "Community Events",
+                        "content": {"paragraph": [
+                            "Local community events are happening this weekend.",
+                            "Here are some highlights and how to participate."
+                        ]}
+                    },
+                    {
+                        "author": "Anna Red",
+                        "title": "City Development Projects",
+                        "content": {"paragraph": [
+                            "The city has several ongoing development projects.",
+                            "Get the latest updates and project timelines."
+                        ]}
+                    }
+                ]
+            }
+        ]},
+        "@published": "2024-06-15"
+    }}
+}}
