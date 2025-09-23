@@ -11,32 +11,26 @@ JSON format, enabling easy interoperability between different data formats.
 - Test-driven development with JUnit 5 for reliable and robust code
 
 ## Prerequisites:
-- Java Development Kit (JDK) 8 or higher
-- Maven or Gradle build tool
+- Java Development Kit (JDK) 11 or higher
+- Gradle (wrapper included)
 
 ## Getting Started:
 
 1. Clone the repository:
-2. Build the project using your preferred build tool:
-- Using Maven:
-  ```
-  mvn clean install
-  ```
-- Using Gradle:
-  ```
-  gradle clean build
-  ```
+2. Build the project:
+   ```
+   ./gradlew clean build
+   ```
 
 3. Start converting XML files to JSON using the provided API.
 
 ## Dependencies:
-- StAX API (version 1.0.1)
-- JSON (version 20220320)
-- SLF4J Simple (version 1.7.32)
+- org.json (20240303)
+- Logback Classic (1.5.12)
 
 ## Testing:
-- JUnit Jupiter API (version 5.8.2)
-- JUnit Jupiter Engine (version 5.8.2)
+- JUnit Jupiter API (5.11.3)
+- JUnit Jupiter Engine (5.11.3)
 
 ## Contributing:
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.

@@ -27,7 +27,7 @@ public class Xml2JsonConverter {
     public static final String OUTPUT_FILE_NAME = "result.json";
 
     public static void main(String[] args) {
-        final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newDefaultNSInstance();
+        final DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         final File resultFile = new File(OUTPUT_FILE_NAME);
         try (FileWriter fileWriter = new FileWriter(resultFile)) {
             final Path path = Paths.get(ClassLoader.getSystemResource(INPUT_FILE_NAME).toURI());
